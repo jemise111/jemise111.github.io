@@ -1,67 +1,55 @@
-var galleryItems = $('.project-display');
-var POSITIONCHANGER = 150; // Percentage, not pixels
+var POSITIONCHANGER = 100; // Percentage, not pixels
+var project1 = $('<div class="project-display" id="baller"><img src="http://placekitten.com/300/300"><div class="project-display-info"><p>Name: Kitten</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten.github.com</p></div></div>)');
+var project2 = $('<div class="project-display" id="learnur"><img src="http://placekitten.com/301/301"><div class="project-display-info"><p>Name: Kitten1</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten1.github.com</p></div></div>)');
+var project3 = $('<div class="project-display" id="rephanto"><img src="http://placekitten.com/302/302"><div class="project-display-info"><p>Name: Kitten2</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten2.github.com</p></div></div>)');
+var projects = [project1, project2, project3];
 
 function initialize() {
-  galleryItems.hide();
-  galleryItems.eq(0).show();
-  // for (var i = 0; i < galleryItems.length; i++) {
-  //   var leftPos = POSITIONCHANGER * i;
-  //   galleryItems.eq(i).css('left', leftPos + "%");
-  // }
-}
-
-function startFade() {
-  var counter = 0;
-  var interval = setInterval(function(){
-    galleryItems.eq(counter % (galleryItems.length)).fadeOut(1000);
-    galleryItems.eq((counter + 1) % (galleryItems.length)).fadeIn(1000);
-    counter++;
-  }, 5000);
+  $('#projects').append(project1);
 }
 
 function startCarousel(){
-  rotateLeft();
-  // var interval = setInterval(function(){
-  //     rotateLeft();
-  //   }, 1000);
+  var counter = 0;
+  var interval = setInterval(function(){
+    var elToHide = projects[counter % (projects.length)];
+    var elToShow = projects[(counter + 1) % (projects.length)];
+    elToShow.css('opacity', '0.25');
+    $('#projects').append(elToShow);
+    elToHide.animate({
+      top: '-100%',
+      opacity: 0.25
+    }, 3000, function(){
+    });
+    elToShow.animate({
+      top: '-100%',
+      opacity: 1
+    }, 3000, function(){
+      $('#projects').empty();
+      $.each(projects, function(index, element){
+        element.css('top', '0%');
+        element.css('opacity', '1');
+      });
+      $('#projects').append(elToShow);
+    });
+  counter++;
+  }, 5000);
 }
 
-function rotateLeft() {
-  // $.each(galleryItems, function(index, item){
-  //   var curLeftPct = parseInt($(item).css("left"), 10);
-  //   var newLeftPct = (curLeftPct - POSITIONCHANGER) + "%";
-  //   if (parseInt($(item).css('left'), 10) === POSITIONCHANGER) {
-  //     $(item).css('display', 'inline-block');
-  //   }
-  //   $(item).animate({
-  //     left: newLeftPct
-  //   }, 5000);
-  // });
-  // $.each(galleryItems, function(index, item){
-  //   var curLeftPct = parseInt($(item).css("left"), 10);
-  //   var newLeftPct = (curLeftPct - POSITIONCHANGER) + "%";
-  //   if (curLeftPct === POSITIONCHANGER) {
-  //     $(item).fadeIn();
-  //   } else {
-  //     $(item).fadeOut();
-  //   }
-  //   var newDisplay = curLeftPct === 150 ? 'inline-block' : 'none';
-  //   console.log(newDisplay);
-  //   $(item).animate({
-  //     left: newLeftPct,
-  //     display: newDisplay,
-  //   }, 2000);
-  // });
+function smoothScrolling(){
+  $('.smoothscroll').click(function(e){
+    e.preventDefault();
+    var topPaddingOffset = parseInt($('body').css('padding-top'), 10);
+    var id = $(this).text().toLowerCase();
+    $('html, body').animate({
+      scrollTop: $('#' + id).offset().top - topPaddingOffset
+    }, 1300);
+  });
 }
-  // galleryItems.animate({
-  //   left: "",
-  //   opacity: 0.25
-  // }, 2000);
 
 $(document).ready(function(){
   initialize();
-  startFade();
-  // startCarousel();
+  startCarousel();
+  smoothScrolling();
 });
 
 // For list of skillz (ruby, rails, psql, etc.) do a word

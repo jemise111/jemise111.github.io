@@ -246,7 +246,7 @@ textarea {
 
     a,
     a:visited {
-        text-decoration: underline;
+        text-decoration: none;
     }
 
     a[href]:after {
@@ -303,17 +303,65 @@ textarea {
     }
 }
 
-.project-box {
-    margin: 0 auto;
-    position: relative;
-    width: 50%;
-    border: 1px solid blue;
-    /*position: relative;*/
+body {
+    padding-top: 80px;
 }
 
-.project-box div{
+nav {
+    background: white;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+nav li {
     display: inline-block;
-    position: absolute;
+    font-weight: bolder;
+    font-family: 'Lemon', cursive;
+    font-size: 22px;
+    margin: 0 1.5em;
+}
+
+#about {
+    border: 1px solid black;
+}
+
+#technologies {
+    border: 1px solid black;
+}
+
+#projects {
+    background: beige;
+    border: 1px solid black;
+    height: 400px;
+    overflow: hidden;
+}
+
+.project-display {
+    margin: 30px 25%;
+    width: 50%;
+}
+
+#projects div {
+    display: inline-block;
     padding: 20px;
-    /*position: absolute;*/
+    position: relative;
+}
+
+#contact {
+    border: 1px solid black;
+}
+
+a, a:visited {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #888888;
 }
