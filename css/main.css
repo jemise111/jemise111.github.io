@@ -364,12 +364,10 @@ textarea {
 }
 
 #technologies {
-    border: 1px solid black;
 }
 
 #projects {
     background: beige;
-    border: 1px solid black;
     height: 400px;
     overflow: hidden;
 }
@@ -390,7 +388,27 @@ textarea {
 }
 
 #contact {
-    border: 1px solid black;
+    text-align: center
+}
+
+#contact-header {
+    font-family: 'Lemon', cursive;
+    font-size: 3em;
+}
+
+#contact-list {
+    background: darkgrey;
+    margin: 0;
+    padding: 20px;
+    list-style-type: none;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+}
+
+#contact-list li {
+    display: inline-block;
+    margin: 0 10px;
 }
 
 a, a:visited {

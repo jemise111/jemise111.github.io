@@ -1,48 +1,50 @@
 var POSITIONCHANGER = 100; // Percentage, not pixels
-var project1 = $('<div class="project-display" id="baller"><img src="img/ballernyc.png"><div class="project-display-info"><p>Name: Kitten</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten.github.com</p></div></div>)');
-var project2 = $('<div class="project-display" id="learnur"><img src="img/learnr.png"><div class="project-display-info"><p>Name: Kitten1</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten1.github.com</p></div></div>)');
-var project3 = $('<div class="project-display" id="relephant"><img src="img/relephant.png"><div class="project-display-info"><p>Name: Kitten2</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten2.github.com</p></div></div>)');
+var project1 = $('<div class="project-display" id="baller-display"><img src="img/ballernyc.png"><div class="project-display-info"><p>Name: Kitten</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten.github.com</p></div></div>)');
+var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><p>Name: Kitten1</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten1.github.com</p></div></div>)');
+var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><p>Name: Kitten2</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten2.github.com</p></div></div>)');
 var projects = [project1, project2, project3];
-var carouselCounter = 0;
+var carouselCounter;
+var interval;
 
-function initialize() {
-  $('#projects').append(project1);
-}
-
-function startCarousel(){
-  var interval = setInterval(function(){
-    var elToHide = projects[carouselCounter % (projects.length)];
+function startCarousel(currentElIndex){
+  projectButtonPressed = false;
+  $('#play').hide();
+  $('#pause').show();
+  carouselCounter = currentElIndex;
+  $('#projects').empty();
+  resetProjectsCSS();
+  $('#projects').append(projects[carouselCounter % (projects.length)]);
+  interval = setInterval(function(){
     var elToShow = projects[(carouselCounter + 1) % (projects.length)];
-    elToShow.css('opacity', '0.25');
-    $('#projects').append(elToShow);
-    elToHide.animate({
-      top: '-100%',
-      opacity: 0.25
-    }, 3000, function(){
-    });
-    elToShow.animate({
-      top: '-100%',
-      opacity: 1
-    }, 3000, function(){
-      $('#projects').empty();
-      $.each(projects, function(index, element){
-        element.css('top', '0%');
-        element.css('opacity', '1');
-      });
-      $('#projects').append(elToShow);
-    });
-  carouselCounter++;
-  }, 10000);
+    carouselIteration(elToShow);
+  }, 4000);
 }
 
-function smoothScrolling(){
-  $('.smoothscroll').click(function(e){
-    e.preventDefault();
-    var topPaddingOffset = parseInt($('body').css('padding-top'), 10);
-    var id = $(this).text().toLowerCase();
-    $('html, body').animate({
-      scrollTop: $('#' + id).offset().top - topPaddingOffset
-    }, 1300);
+function carouselIteration(elToShow){
+  var movementHeight = $('#projects').height();
+  $('.project-button').attr('disabled', 'true');
+  elToShow.css('opacity', '0.25');
+  $('#projects').append(elToShow);
+  $('.project-display').eq(0).animate({
+    top: '-=' + movementHeight,
+    opacity: 0.25
+  }, 2000);
+  elToShow.animate({
+    top: '-=' + movementHeight,
+    opacity: 1
+  }, 2000, function(){
+    $('#projects').empty();
+    resetProjectsCSS();
+    $('#projects').append(elToShow);
+    $('.project-button').removeAttr('disabled');
+  });
+  carouselCounter++;
+}
+
+function resetProjectsCSS(){
+  $.each(projects, function(index, element){
+    element.css('top', '0px');
+    element.css('opacity', '1');
   });
 }
 
@@ -62,11 +64,53 @@ function fixNavBar() {
   });
 }
 
+function playPause(){
+  $('#play').click(function(){
+    startCarousel(carouselCounter);
+  });
+  $('#pause').click(function(){
+    clearInterval(interval);
+    $(this).hide();
+    $('#play').show();
+  });
+}
+
+function projectButtons(){
+  $('.project-button').click(function(){
+    var projectName = $(this).attr('id');
+    var projectIndex;
+    if (projectName === 'baller') {
+      projectIndex = 0;
+    } else if (projectName === 'learnr') {
+      projectIndex = 1;
+    } else {
+      projectIndex = 2;
+    }
+    clearInterval(interval);
+    startCarousel(projectIndex);
+    clearInterval(interval);
+    $('#pause').hide();
+    $('#play').show();
+  });
+}
+
+function smoothScrolling(){
+  $('.smoothscroll').click(function(e){
+    e.preventDefault();
+    var topPaddingOffset = parseInt($('body').css('padding-top'), 10);
+    var id = $(this).text().toLowerCase();
+    $('html, body').animate({
+      scrollTop: $('#' + id).offset().top - topPaddingOffset
+    }, 1300);
+  });
+}
+
 $(document).ready(function(){
-  initialize();
-  startCarousel();
+  startCarousel(0);
+  playPause();
   smoothScrolling();
   fixNavBar();
+  projectButtons();
 });
 
 // For list of skillz (ruby, rails, psql, etc.) do a word
