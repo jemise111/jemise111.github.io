@@ -1,18 +1,18 @@
 var POSITIONCHANGER = 100; // Percentage, not pixels
-var project1 = $('<div class="project-display" id="baller"><img src="http://placekitten.com/300/300"><div class="project-display-info"><p>Name: Kitten</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten.github.com</p></div></div>)');
-var project2 = $('<div class="project-display" id="learnur"><img src="http://placekitten.com/301/301"><div class="project-display-info"><p>Name: Kitten1</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten1.github.com</p></div></div>)');
-var project3 = $('<div class="project-display" id="rephanto"><img src="http://placekitten.com/302/302"><div class="project-display-info"><p>Name: Kitten2</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten2.github.com</p></div></div>)');
+var project1 = $('<div class="project-display" id="baller"><img src="img/ballernyc.png"><div class="project-display-info"><p>Name: Kitten</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten.github.com</p></div></div>)');
+var project2 = $('<div class="project-display" id="learnur"><img src="img/learnr.png"><div class="project-display-info"><p>Name: Kitten1</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten1.github.com</p></div></div>)');
+var project3 = $('<div class="project-display" id="relephant"><img src="img/relephant.png"><div class="project-display-info"><p>Name: Kitten2</p><p>URL: <a href="http://placekitten.com/300/300">Kitten Link</a></p><p>Code: kitten2.github.com</p></div></div>)');
 var projects = [project1, project2, project3];
+var carouselCounter = 0;
 
 function initialize() {
   $('#projects').append(project1);
 }
 
 function startCarousel(){
-  var counter = 0;
   var interval = setInterval(function(){
-    var elToHide = projects[counter % (projects.length)];
-    var elToShow = projects[(counter + 1) % (projects.length)];
+    var elToHide = projects[carouselCounter % (projects.length)];
+    var elToShow = projects[(carouselCounter + 1) % (projects.length)];
     elToShow.css('opacity', '0.25');
     $('#projects').append(elToShow);
     elToHide.animate({
@@ -31,8 +31,8 @@ function startCarousel(){
       });
       $('#projects').append(elToShow);
     });
-  counter++;
-  }, 5000);
+  carouselCounter++;
+  }, 10000);
 }
 
 function smoothScrolling(){
@@ -46,10 +46,27 @@ function smoothScrolling(){
   });
 }
 
+// should be animation here
+function fixNavBar() {
+  var navBarHeight = $('.nav-list').outerHeight();
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > $('#header-container').outerHeight()) {
+      $('.nav-list').addClass('fixed-nav');
+      $('body').css('padding-top', navBarHeight);
+      $('.nav-item').css('margin', '0 50px');
+    } else {
+      $('.nav-list').removeClass('fixed-nav');
+      $('body').css('padding-top', '0');
+      $('.nav-item').css('margin', '0 10px');
+    }
+  });
+}
+
 $(document).ready(function(){
   initialize();
   startCarousel();
   smoothScrolling();
+  fixNavBar();
 });
 
 // For list of skillz (ruby, rails, psql, etc.) do a word

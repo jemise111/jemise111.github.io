@@ -303,32 +303,64 @@ textarea {
     }
 }
 
-body {
-    padding-top: 80px;
+#header-container {
+    padding: 150px 0;
+    text-align: center;
 }
 
-nav {
+#header {
+    margin: 0 auto;
+    width: 85%;
+}
+
+#header-bio {
+    display: inline-block;
+    font-family: 'Lemon', cursive;
+    padding: 1em;
+}
+
+#header img {
+    border-radius: 10px;
+    height: 14em;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    -moz-box-shadow:    1px 1px 1px 1px #aaa;
+    -webkit-box-shadow: 1px 1px 1px 1px #aaa;
+    box-shadow:         1px 1px 1px 1px #aaa;
+}
+
+#name {
+    font-family: 'Lemon', cursive;
+    font-size: 4em;
+    margin: 0;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 12px 0;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-item {
+    display: inline-block;
+    font-family: 'Lemon', cursive;
+    font-size: 1.3em;
+    margin: 0 10px;
+}
+
+.fixed-nav {
     background: white;
     position: fixed;
-    text-align: center;
     top: 0;
-    width: 100%;
-    z-index: 10;
-    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
-}
-
-nav li {
-    display: inline-block;
-    font-weight: bolder;
-    font-family: 'Lemon', cursive;
-    font-size: 22px;
-    margin: 0 1.5em;
+    -moz-box-shadow:    1px 1px 1px 1px #ccc;
+    -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+    box-shadow:         1px 1px 1px 1px #ccc;
 }
 
 #about {
-    border: 1px solid black;
 }
 
 #technologies {
@@ -344,13 +376,17 @@ nav li {
 
 .project-display {
     margin: 30px 25%;
-    width: 50%;
+    width: 70%;
 }
 
 #projects div {
     display: inline-block;
     padding: 20px;
     position: relative;
+}
+
+.project-display img {
+    height: 300px;
 }
 
 #contact {
