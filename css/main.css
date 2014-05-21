@@ -303,8 +303,24 @@ textarea {
     }
 }
 
+body {
+    background-image: url('../img/background.jpeg');
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+a, a:visited {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #685835;
+}
+
 #header-container {
-    padding: 150px 0;
+    padding: 200px 0;
     text-align: center;
 }
 
@@ -315,7 +331,6 @@ textarea {
 
 #header-bio {
     display: inline-block;
-    font-family: 'Lemon', cursive;
     padding: 1em;
 }
 
@@ -331,13 +346,14 @@ textarea {
 }
 
 #name {
-    font-family: 'Lemon', cursive;
     font-size: 4em;
     margin: 0;
 }
 
 .nav-list {
-    margin: 0;
+    background: white;
+    margin: 0 auto;
+    opacity: 0.7;
     padding: 12px 0;
     text-align: center;
     width: 100%;
@@ -346,13 +362,12 @@ textarea {
 
 .nav-item {
     display: inline-block;
-    font-family: 'Lemon', cursive;
     font-size: 1.3em;
     margin: 0 10px;
+    opacity: 1;
 }
 
 .fixed-nav {
-    background: white;
     position: fixed;
     top: 0;
     -moz-box-shadow:    1px 1px 1px 1px #ccc;
@@ -361,38 +376,76 @@ textarea {
 }
 
 #about {
+    background: #31353D;
+    padding: 200px;
 }
 
 #technologies {
+    background: #445878;
+    padding: 200px;
 }
 
 #projects {
-    background: beige;
+    background: #1C1D21;
+}
+
+#project-box {
+    background: #1C1D21;
     height: 400px;
     overflow: hidden;
+    margin: 0;
+    padding: 120px 100px 0px 100px;
 }
 
 .project-display {
-    margin: 30px 25%;
-    width: 70%;
-}
-
-#projects div {
     display: inline-block;
-    padding: 20px;
+    height: 400px;
     position: relative;
 }
 
+.project-display a, .project-display a:visited {
+    color: #685835;
+    text-decoration: none;
+}
+
+.project-display a:hover, .project-display a:active {
+    text-decoration: underline;
+}
+
 .project-display img {
-    height: 300px;
+    width: auto;
+    max-width: 50%;
+    float: right;
+    padding: 20px;
+}
+
+.project-display-info {
+    margin: 0;
+    padding: 10px;
+}
+
+.play-pause {
+    height: 4em;
+    padding: 1em 0;
+    margin-left: 100px;
+}
+
+.project-button {
+    background: #1C1D21;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    margin: 0 10px;
+    height: 58px;
+    width: 150px;
 }
 
 #contact {
-    text-align: center
+    padding: 100px;
+    text-align: center;
 }
 
 #contact-header {
-    font-family: 'Lemon', cursive;
     font-size: 3em;
 }
 
@@ -411,11 +464,6 @@ textarea {
     margin: 0 10px;
 }
 
-a, a:visited {
-    color: #333333;
-    text-decoration: none;
-}
-
-a:hover, a:active {
-    color: #888888;
+#contact-list img {
+    border-radius: 100%;
 }
