@@ -310,7 +310,7 @@ body {
     color: #FFFFFF;
     font-family: 'Lato', sans-serif;
     font-size: 1.1em;
-    font-weight: 100;
+    /*font-weight: 100;*/
     -webkit-font-smoothing: subpixel-antialiased
 }
 
@@ -330,7 +330,7 @@ a:hover, a:active {
 }
 
 #name {
-    font-weight: 100;
+    /*font-weight: 100;*/
     font-size: 4em;
     margin: 0;
 }
@@ -342,7 +342,7 @@ a:hover, a:active {
 #caption {
     padding: 0;
     margin: 0;
-    font-weight: 100;
+    /*font-weight: 100;*/
 }
 
 #contact-list {
@@ -393,7 +393,7 @@ a:hover, a:active {
 
 .nav-item a, .nav-item a:visited {
     color: #333333;
-    font-weight: 300;
+    /*font-weight: 300;*/
     text-decoration: none;
 }
 
@@ -412,7 +412,7 @@ a:hover, a:active {
 
 .section-header {
     font-size: 2.8em;
-    font-weight: 100;
+    /*font-weight: 100;*/
     text-align: center;
 }
 
@@ -494,7 +494,7 @@ a:hover, a:active {
 
 .project-title {
     font-size: 2em;
-    font-weight: 100;
+    /*font-weight: 100;*/
 }
 
 #baller-display a, #baller-display a:visited {
@@ -561,7 +561,7 @@ a:hover, a:active {
 }
 
 #baller, #learnr, #relephant {
-    font-weight: 100;
+    /*font-weight: 100;*/
 }
 
 #footer p {
