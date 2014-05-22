@@ -420,7 +420,7 @@ a:hover, a:active {
     background: #666666;
     line-height: 2em;
     opacity: 0.7;
-    padding: 3% 10% 10% 5%;
+    padding: 3% 5% 10% 5%;
 }
 
 #self-pic {
@@ -436,7 +436,7 @@ a:hover, a:active {
 
 #technologies {
     background: #555555;
-    padding: 5% 2% 10% 5%;
+    padding: 5% 5% 10% 5%;
     opacity: 0.7;
     text-align: center;
 }
