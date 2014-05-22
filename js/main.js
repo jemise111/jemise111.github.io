@@ -116,7 +116,7 @@ function smoothScrolling(){
     var id = $(this).text().toLowerCase();
     var navHeight = $('.nav-list').height(); // to put pause controls into view
     if (id === 'projects') {
-      navHeight -= 20;
+      navHeight -= 30;
     }
     $('html, body').animate({
       scrollTop: $('#' + id).offset().top - navHeight

@@ -324,33 +324,8 @@ a:hover, a:active {
 }
 
 #header-container {
-    padding: 195px 0;
+    padding: 180px 0;
     text-align: center;
-}
-
-#contact-list {
-    margin: 40px 0 0 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-#contact-list li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-#contact-list img {
-    -moz-transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#contact-list img:hover {
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
 }
 
 #name {
@@ -367,6 +342,35 @@ a:hover, a:active {
     padding: 0;
     margin: 0;
     font-weight: 100;
+}
+
+#contact-list {
+    margin: 40px 0 30px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#contact-list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#contact-list img, #mail-link img {
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#contact-list img:hover, #mail-link img:hover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+#mail-link {
+    text-decoration: none;
 }
 
 .nav-list {
@@ -444,7 +448,7 @@ a:hover, a:active {
     border-radius: 10px;
     display: inline-block;
     margin: 5px;
-    min-height: 270px;
+    height: 280px;
     min-width: 200px;
     padding: 10px;
     text-align: center;
@@ -471,6 +475,7 @@ a:hover, a:active {
     background: #333333;
     padding: 3% 5% 10% 5%;
     opacity: 0.7;
+    text-align: center;
 }
 
 #project-box {
@@ -483,6 +488,7 @@ a:hover, a:active {
     display: inline-block;
     height: 400px;
     position: relative;
+    text-align: left;
 }
 
 .project-title {
@@ -491,7 +497,7 @@ a:hover, a:active {
 }
 
 #baller-display a, #baller-display a:visited {
-    color: #FDD28C;
+    color: #FD7914;
     text-decoration: none;
 }
 
@@ -529,10 +535,18 @@ a:hover, a:active {
     padding: 10px;
 }
 
+#project-button-list {
+    text-decoration: none;
+}
+
+#project-button-list li {
+    display: inline-block;
+}
+
 .play-pause {
+    display: inline-block;
     height: 4em;
     padding: 0 2em 0 0;
-    margin-left: 100px;
 }
 
 .project-button {
@@ -556,4 +570,14 @@ a:hover, a:active {
     opacity: 0.7;
     padding: 0;
     text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    #project-box {
+        height: 470px;
+    }
+
+    .project-display {
+        height: 470px;
+    }
 }
