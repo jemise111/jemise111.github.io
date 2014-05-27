@@ -25,7 +25,7 @@ function startCarousel(currentElIndex){
   interval = setInterval(function(){
     var elToShow = projects[(carouselCounter + 1) % (projects.length)];
     carouselIteration(elToShow);
-  }, 6000);
+  }, 10000);
 }
 
 function carouselIteration(elToShow){
