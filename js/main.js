@@ -6,6 +6,7 @@ var projects = [project1, project2, project3];
 var carouselCounter;
 var interval;
 var navIsWide = false;
+var techBoxesShowing = false;
 
 function slideCaption(){
   $('#caption').hide();
@@ -56,7 +57,6 @@ function resetProjectsCSS(){
   });
 }
 
-// should be animation here
 function fixNavBar() {
   var navBarHeight = $('.nav-list').outerHeight();
   $(window).scroll(function(){
@@ -124,6 +124,24 @@ function smoothScrolling(){
   });
 }
 
+function animateTechnologiesBoxes() {
+  $('.technologies-box').hide();
+  if (!techBoxesShowing) {
+    $(window).scroll(function(){
+      techBoxesOffset = $('#about .section-header').offset().top + $('#technologies').outerHeight()/2;
+      if ($(this).scrollTop() > techBoxesOffset) {
+        $('.technologies-box').show();
+        $('.technologies-box').animate({
+          left: '0px',
+          opacity: 1,
+          top: '0px'
+        }, 1000);
+        techBoxesShowing = true;
+      }
+    });
+  }
+}
+
 $(document).ready(function(){
   slideCaption();
   startCarousel(0);
@@ -131,6 +149,7 @@ $(document).ready(function(){
   smoothScrolling();
   fixNavBar();
   projectButtons();
+  animateTechnologiesBoxes();
 });
 
 // For list of skillz (ruby, rails, psql, etc.) do a word

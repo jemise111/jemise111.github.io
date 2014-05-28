@@ -438,6 +438,7 @@ a:hover, a:active {
     background: #555555;
     padding: 5% 4% 10% 4%;
     opacity: 0.7;
+    min-height: 300px;
     text-align: center;
 }
 
@@ -451,10 +452,32 @@ a:hover, a:active {
     margin: 5px;
     height: 280px;
     min-width: 200px;
+    opacity: 0.1;
     padding: 10px;
+    position: relative;
     text-align: center;
     vertical-align: top;
     width: 22%;
+}
+
+#tech-box-1 {
+    left: -200px;
+    top: -100px;
+}
+
+#tech-box-2 {
+    left: -300px;
+    top: 100px;
+}
+
+#tech-box-3 {
+    left: 200px;
+    top: -100px;
+}
+
+#tech-box-4 {
+    left: 300px;
+    top: 100px;
 }
 
 .technologies-list {
