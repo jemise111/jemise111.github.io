@@ -1,12 +1,13 @@
 var POSITIONCHANGER = 100; // Percentage, not pixels
 var project1 = $('<div class="project-display" id="baller-display"><img src="img/ballernyc.png"><div class="project-display-info"><h2 class="project-title">BallerNYC</h2><p class="project-description">Set up pickup basketball games before ever stepping foot outside. BallerNYC allows users to search for a public court in New York City and schedule a game for other users to join. Why take the risk of traveling to an empty court when you can ensure players will be there.</p><p class="project-links"><a href="http://ballernycco.com">View the site</a><br><a href="https://github.com/jemise111/baller">View the code</a></p></div></div>)');
-var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learn.r</h2><p class="project-description">An interactive free learning platform for children. Learn music theory concepts with an interactive online piano. Then learn programming fundamentals through a game constructed to teach kids the value of "coding" step-by-step processes to achieve a result.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
-var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool with the capability to analyze speech for meaning. Using the Google Web Speech API Relephant provides users with the functionality to search their speech history, and comb through past conversations looking for the most relevant concepts.</p><p class="project-links"><a href="http://immense-wildwood-2725.herokuapp.com">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
+var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learnr</h2><p class="project-description">An interactive free learning platform for children. Learn music theory concepts with an interactive online piano. Then learn programming fundamentals through a game constructed to teach kids the value of "coding" step-by-step processes to achieve a result.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
+var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool with the capability to analyze speech for meaning. Using the Google Web Speech API Relephant provides users with the functionality to search their speech history, and comb through past conversations looking for the most relevant concepts.</p><p class="project-links"><a href="http://relephant.me">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
 var projects = [project1, project2, project3];
 var carouselCounter;
 var interval;
 var navIsWide = false;
 var techBoxesShowing = false;
+var cutMidway = false;
 
 function slideCaption(){
   $('#caption').hide();
@@ -15,18 +16,45 @@ function slideCaption(){
   }, 300);
 }
 
-function startCarousel(currentElIndex){
+function carouselControls() {
+  var colorPicker = ['#FD7914', '#87CEFA', '#B8B1AD'];
+  for (var i = 0; i < projects.length; i++) {
+    var dot = $("<li class='project-control-dot'><div id='" + projects[i].find('h2').text() + "-dot'></li></div>");
+    $('#project-controls').append(dot);
+    dot.find('div').css('background', colorPicker[i]);
+  }
+}
+
+function startCarousel(){
   projectButtonPressed = false;
   $('#play').hide();
   $('#pause').show();
-  carouselCounter = currentElIndex;
   $('#project-box').empty();
   resetProjectsCSS();
+  resetProjectDotCSS();
   $('#project-box').append(projects[carouselCounter % (projects.length)]);
+  $('#' + projects[(carouselCounter) % (projects.length)].find('h2').text() + '-dot').css({
+    height: '25px',
+    width: '25px'
+  });
   interval = setInterval(function(){
     var elToShow = projects[(carouselCounter + 1) % (projects.length)];
+    var dotToHideID = '#' + projects[(carouselCounter) % (projects.length)].find('h2').text() + '-dot';
+    var dotToShowID = '#' + elToShow.find('h2').text() + '-dot';
+    changeDotSizes(dotToHideID, dotToShowID);
     carouselIteration(elToShow);
-  }, 10000);
+  }, 5000);
+}
+
+function changeDotSizes(dotToHideID, dotToShowID){
+  $(dotToHideID).animate({
+    height: '15px',
+    width: '15px'
+  });
+  $(dotToShowID).animate({
+    height: '25px',
+    width: '25px'
+  });
 }
 
 function carouselIteration(elToShow){
@@ -42,12 +70,18 @@ function carouselIteration(elToShow){
     top: '-=' + movementHeight,
     opacity: 1
   }, 2000, function(){
-    $('#project-box').empty();
-    resetProjectsCSS();
-    $('#project-box').append(elToShow);
-    $('.project-button').removeAttr('disabled');
+    if (!cutMidway) {
+      $('#project-box').empty();
+      resetProjectsCSS();
+      $('#project-box').append(elToShow);
+    }
   });
   carouselCounter++;
+}
+
+function resetProjectDotCSS(){
+  $('.project-control-dot div').css('height', '15px');
+  $('.project-control-dot div').css('width', '15px');
 }
 
 function resetProjectsCSS(){
@@ -94,17 +128,51 @@ function playPause(){
 function projectButtons(){
   $('.project-button').click(function(){
     var projectName = $(this).attr('id');
-    var projectIndex;
     if (projectName === 'baller') {
-      projectIndex = 0;
+      carouselCounter = 0;
     } else if (projectName === 'learnr') {
-      projectIndex = 1;
+      carouselCounter = 1;
     } else {
-      projectIndex = 2;
+      carouselCounter = 2;
     }
     clearInterval(interval);
-    startCarousel(projectIndex);
+    $(".project-display").stop(true);
+    startCarousel(carouselCounter);
+    $('#pause').hide();
+    $('#play').show();
+  });
+}
+
+function projectDotsHover(){
+  $('.project-control-dot div').mouseenter(function(){
+    var title = $(this).attr('id').replace('-dot','');
+    var leftOffset = $(this)[0].offsetLeft - title.length / 2 * 5;
+    var topOffset = $(this)[0].offsetTop - 35;
+    var text = $('<span id="project-temp-label" color="white">' + title + '</span>');
+    text.css({position: 'absolute', left: leftOffset, top: topOffset});
+    $('body').append(text);
+  });
+  $('.project-control-dot div').mouseleave(function(){
+    $('#project-temp-label').remove();
+  });
+}
+
+function projectDotsClick(){
+  $('.project-control-dot div').click(function(){
+    var projectName = $(this).attr('id').replace('-dot','');
+    if (projectName === 'BallerNYC') {
+      carouselCounter = 0;
+    } else if (projectName === 'Learnr') {
+      carouselCounter = 1;
+    } else {
+      carouselCounter = 2;
+    }
+    cutMidway = true;
+    $('.project-display').stop();
     clearInterval(interval);
+    startCarousel();
+    clearInterval(interval);
+    cutMidway = false;
     $('#pause').hide();
     $('#play').show();
   });
@@ -144,16 +212,16 @@ function animateTechnologiesBoxes() {
 
 $(document).ready(function(){
   slideCaption();
-  startCarousel(0);
+  carouselControls();
+  carouselCounter = 0;
+  startCarousel();
   playPause();
   smoothScrolling();
   fixNavBar();
+  projectDotsHover();
+  projectDotsClick();
   projectButtons();
   animateTechnologiesBoxes();
 });
-
-// For list of skillz (ruby, rails, psql, etc.) do a word
-// map where things I know best are larger than things I
-// do not.
 
 // Do scavenger hunt. Make reward landing page? JESSE.CLUB

@@ -502,10 +502,35 @@ a:hover, a:active {
     text-align: center;
 }
 
+#project-controls {
+    list-style: none;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0;
+    width: 50%;
+}
+
+.project-control-dot {
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+    width: 40px;
+}
+
+.project-control-dot div {
+    border: 2px solid white;
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    vertical-align: middle;
+    width: 15px;
+}
+
 #project-box {
     height: 400px;
+    margin: 0 0 20px 0;
     overflow: hidden;
-    margin: 0;
 }
 
 .project-display {
@@ -568,9 +593,9 @@ a:hover, a:active {
 }
 
 .play-pause {
-    display: inline-block;
-    height: 4em;
-    padding: 0 2em 0 0;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .project-button {
