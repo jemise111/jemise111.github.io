@@ -65,11 +65,11 @@ function carouselIteration(elToShow){
   $('.project-display').eq(0).animate({
     top: '-=' + movementHeight,
     opacity: 0.25
-  }, 2000);
+  }, 600);
   elToShow.animate({
     top: '-=' + movementHeight,
     opacity: 1
-  }, 2000, function(){
+  }, 600, function(){
     if (!cutMidway) {
       $('#project-box').empty();
       resetProjectsCSS();
@@ -137,9 +137,7 @@ function projectButtons(){
     }
     clearInterval(interval);
     $(".project-display").stop(true);
-    startCarousel(carouselCounter);
-    $('#pause').hide();
-    $('#play').show();
+    startCarousel();
   });
 }
 
