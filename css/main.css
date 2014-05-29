@@ -518,6 +518,7 @@ a:hover, a:active {
 }
 
 .project-control-dot div {
+    background: black;
     border: 2px solid white;
     border-radius: 100%;
     cursor: pointer;
@@ -584,28 +585,10 @@ a:hover, a:active {
     padding: 10px;
 }
 
-#project-button-list {
-    text-decoration: none;
-}
-
-#project-button-list li {
-    display: inline-block;
-}
-
 .play-pause {
     cursor: pointer;
     margin: 0 auto;
     padding: 0;
-}
-
-.project-button {
-    background: #333333;
-    border-radius: 5px;
-    color: white;
-    padding: 10px;
-    margin: 0 10px;
-    height: 58px;
-    width: 150px;
 }
 
 #baller, #learnr, #relephant {

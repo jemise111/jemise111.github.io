@@ -3,6 +3,7 @@ var project1 = $('<div class="project-display" id="baller-display"><img src="img
 var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learnr</h2><p class="project-description">An interactive free learning platform for children. Learn music theory concepts with an interactive online piano. Then learn programming fundamentals through a game constructed to teach kids the value of "coding" step-by-step processes to achieve a result.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
 var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool with the capability to analyze speech for meaning. Using the Google Web Speech API Relephant provides users with the functionality to search their speech history, and comb through past conversations looking for the most relevant concepts.</p><p class="project-links"><a href="http://relephant.me">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
 var projects = [project1, project2, project3];
+var colorPicker = ['#FD7914', '#87CEFA', '#B8B1AD'];
 var carouselCounter;
 var interval;
 var navIsWide = false;
@@ -17,11 +18,9 @@ function slideCaption(){
 }
 
 function carouselControls() {
-  var colorPicker = ['#FD7914', '#87CEFA', '#B8B1AD'];
   for (var i = 0; i < projects.length; i++) {
     var dot = $("<li class='project-control-dot'><div id='" + projects[i].find('h2').text() + "-dot'></li></div>");
     $('#project-controls').append(dot);
-    dot.find('div').css('background', colorPicker[i]);
   }
 }
 
@@ -125,24 +124,9 @@ function playPause(){
   });
 }
 
-function projectButtons(){
-  $('.project-button').click(function(){
-    var projectName = $(this).attr('id');
-    if (projectName === 'baller') {
-      carouselCounter = 0;
-    } else if (projectName === 'learnr') {
-      carouselCounter = 1;
-    } else {
-      carouselCounter = 2;
-    }
-    clearInterval(interval);
-    $(".project-display").stop(true);
-    startCarousel();
-  });
-}
-
 function projectDotsHover(){
   $('.project-control-dot div').mouseenter(function(){
+    $(this).css('background', '#252D36');
     var title = $(this).attr('id').replace('-dot','');
     var leftOffset = $(this)[0].offsetLeft - title.length / 2 * 5;
     var topOffset = $(this)[0].offsetTop - 35;
@@ -151,6 +135,7 @@ function projectDotsHover(){
     $('body').append(text);
   });
   $('.project-control-dot div').mouseleave(function(){
+    $(this).css('background', 'black');
     $('#project-temp-label').remove();
   });
 }
@@ -218,7 +203,6 @@ $(document).ready(function(){
   fixNavBar();
   projectDotsHover();
   projectDotsClick();
-  projectButtons();
   animateTechnologiesBoxes();
 });
 
