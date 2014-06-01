@@ -1,7 +1,7 @@
 var POSITIONCHANGER = 100; // Percentage, not pixels
-var project1 = $('<div class="project-display" id="baller-display"><img src="img/ballernyc.png"><div class="project-display-info"><h2 class="project-title">BallerNYC</h2><p class="project-description">Set up pickup basketball games before ever stepping foot outside. BallerNYC allows users to search for a public court in New York City and schedule a game for other users to join. Why take the risk of traveling to an empty court when you can ensure players will be there.</p><p class="project-links"><a href="http://ballernycco.com">View the site</a><br><a href="https://github.com/jemise111/baller">View the code</a></p></div></div>)');
-var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learnr</h2><p class="project-description">An interactive free learning platform for children. Learn music theory concepts with an interactive online piano. Then learn programming fundamentals through a game constructed to teach kids the value of "coding" step-by-step processes to achieve a result.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
-var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool with the capability to analyze speech for meaning. Using the Google Web Speech API Relephant provides users with the functionality to search their speech history, and comb through past conversations looking for the most relevant concepts.</p><p class="project-links"><a href="http://relephant.me">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
+var project1 = $('<div class="project-display" id="baller-display"><img src="img/ballernyc.png"><div class="project-display-info"><h2 class="project-title">BallerNYC</h2><p class="project-description">Set up pickup basketball games before ever stepping foot outside. BallerNYC allows users to search for a public court in New York City and schedule a game for other users to join.</p><p class="project-links"><a href="http://ballernycco.com">View the site</a><br><a href="https://github.com/jemise111/baller">View the code</a></p></div></div>)');
+var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learnr</h2><p class="project-description">An interactive free learning platform for children. Learn music theory through and online keyboard, and programming fundamentals through a fun grid-based game.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
+var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool that graphs the history of your conversations. Relephant also allows users to analyze speech for meaning.</p><p class="project-links"><a href="http://relephant.me">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
 var projects = [project1, project2, project3];
 var colorPicker = ['#FD7914', '#87CEFA', '#B8B1AD'];
 var carouselCounter;
@@ -25,7 +25,6 @@ function carouselControls() {
 }
 
 function startCarousel(){
-  projectButtonPressed = false;
   $('#play').hide();
   $('#pause').show();
   $('#project-box').empty();
@@ -42,7 +41,8 @@ function startCarousel(){
     var dotToShowID = '#' + elToShow.find('h2').text() + '-dot';
     changeDotSizes(dotToHideID, dotToShowID);
     carouselIteration(elToShow);
-  }, 5000);
+    carouselCounter++;
+  }, 7000);
 }
 
 function changeDotSizes(dotToHideID, dotToShowID){
@@ -75,7 +75,6 @@ function carouselIteration(elToShow){
       $('#project-box').append(elToShow);
     }
   });
-  carouselCounter++;
 }
 
 function resetProjectDotCSS(){
@@ -142,22 +141,34 @@ function projectDotsHover(){
 
 function projectDotsClick(){
   $('.project-control-dot div').click(function(){
-    var projectName = $(this).attr('id').replace('-dot','');
-    if (projectName === 'BallerNYC') {
-      carouselCounter = 0;
-    } else if (projectName === 'Learnr') {
-      carouselCounter = 1;
-    } else {
-      carouselCounter = 2;
+    var clickedProjectName = $(this).attr('id').replace('-dot','');
+    var displayedProjectName = projects[carouselCounter % projects.length].find('h2').text();
+    if (clickedProjectName !== displayedProjectName) {
+      if ($('.project-display').is(':animated')) {
+        cutMidway = true;
+        $('.project-display').stop();
+        $('#project-box').empty();
+        $('#project-box').append(projects[carouselCounter % projects.length]);
+      }
+      clearInterval(interval);
+      $('#play').show();
+      $('#pause').hide();
+      resetProjectsCSS();
+      // resetProjectDotCSS();
+      var dotToHideID = '#' + displayedProjectName + '-dot';
+      if (clickedProjectName === 'BallerNYC') {
+        carouselCounter = 0;
+      } else if (clickedProjectName === 'Learnr') {
+        carouselCounter = 1;
+      } else {
+        carouselCounter = 2;
+      }
+      var elToShow = projects[carouselCounter];
+      var dotToShowID = '#' + elToShow.find('h2').text() + '-dot';
+      changeDotSizes(dotToHideID, dotToShowID);
+      cutMidway = false;
+      carouselIteration(elToShow);
     }
-    cutMidway = true;
-    $('.project-display').stop();
-    clearInterval(interval);
-    startCarousel();
-    clearInterval(interval);
-    cutMidway = false;
-    $('#pause').hide();
-    $('#play').show();
   });
 }
 
@@ -165,10 +176,7 @@ function smoothScrolling(){
   $('.smoothscroll').click(function(e){
     e.preventDefault();
     var id = $(this).text().toLowerCase();
-    var navHeight = $('.nav-list').height(); // to put pause controls into view
-    if (id === 'projects') {
-      navHeight -= 30;
-    }
+    var navHeight = $('.nav-list').height();
     $('html, body').animate({
       scrollTop: $('#' + id).offset().top - navHeight
     }, 1500);

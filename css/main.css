@@ -605,19 +605,17 @@ a:hover, a:active {
 }
 
 @media only screen and (max-width: 750px) {
-    #project-button-list li {
-        width: 100%;
-    }
-
-    .play-pause {
-        padding: 0;
-    }
 
     #project-box {
-        height: 470px;
+        height: 450px;
     }
 
     .project-display {
-        height: 470px;
+        height: 450px;
+        text-align: center;
+    }
+
+    .project-display img {
+        float: none;
     }
 }
