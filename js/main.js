@@ -90,12 +90,13 @@ function resetProjectsCSS(){
 }
 
 function fixNavBar() {
-  var navBarHeight = $('.nav-list').outerHeight();
   $(window).scroll(function(){
+    var navBarHeight = $('.nav-list').outerHeight();
     if ($(this).scrollTop() > $('#header-container').outerHeight()) {
+      if ($(window).width() > 480) {
+        $('body').css('padding-top', navBarHeight);
+      }
       $('.nav-list').addClass('fixed-nav');
-      $('body').css('padding-top', navBarHeight);
-      $('.nav-list').css('opacity', '0.95');
       if (!navIsWide) {
         $('.nav-item').animate({margin: '0 3%'});
         navIsWide = true;
@@ -103,7 +104,6 @@ function fixNavBar() {
     } else {
       $('.nav-list').removeClass('fixed-nav');
       $('body').css('padding-top', '0');
-      $('.nav-list').css('opacity', '0.5');
       if (navIsWide) {
         $('.nav-item').animate({margin: '0 1%'});
         navIsWide = false;
@@ -213,5 +213,3 @@ $(document).ready(function(){
   projectDotsClick();
   animateTechnologiesBoxes();
 });
-
-// Do scavenger hunt. Make reward landing page? JESSE.CLUB

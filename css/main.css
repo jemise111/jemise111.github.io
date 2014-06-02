@@ -304,7 +304,7 @@ textarea {
 }
 
 body {
-    background-image: url('../img/background2.jpg');
+    background-image: url('../img/background3.jpg');
     background-attachment: fixed;
     background-size: cover;
     color: #FFFFFF;
@@ -377,7 +377,7 @@ a:hover, a:active {
 .nav-list {
     background: white;
     margin: 0 auto;
-    opacity: 0.5;
+    opacity: 0.7;
     padding: 12px 0;
     text-align: center;
     width: 100%;
@@ -387,7 +387,7 @@ a:hover, a:active {
 .nav-item {
     display: inline-block;
     font-size: 1.3em;
-    margin: 0 10px;
+    margin: 0 1%;
     opacity: 1;
 }
 
@@ -403,6 +403,7 @@ a:hover, a:active {
 
 
 .fixed-nav {
+    opacity: 0.95;
     position: fixed;
     top: 0;
     -moz-box-shadow:    1px 1px 1px 1px #ccc;
@@ -419,7 +420,7 @@ a:hover, a:active {
 #about {
     background: #666666;
     line-height: 2em;
-    opacity: 0.7;
+    opacity: 0.9;
     padding: 3% 5% 10% 5%;
 }
 
@@ -437,7 +438,7 @@ a:hover, a:active {
 #technologies {
     background: #555555;
     padding: 5% 4% 10% 4%;
-    opacity: 0.7;
+    opacity: 0.9;
     min-height: 300px;
     text-align: center;
 }
@@ -498,7 +499,7 @@ a:hover, a:active {
 #projects {
     background: #333333;
     padding: 3% 5% 10% 5%;
-    opacity: 0.7;
+    opacity: 0.9;
     text-align: center;
 }
 
@@ -574,10 +575,10 @@ a:hover, a:active {
 }
 
 .project-display img {
-    width: auto;
-    max-width: 50%;
     float: right;
     padding: 20px;
+    max-width: 50%;
+    width: auto;
 }
 
 .project-display-info {
@@ -597,9 +598,9 @@ a:hover, a:active {
 
 #footer p {
     background: #333333;
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin: 0;
-    opacity: 0.7;
+    opacity: 0.9;
     padding: 0;
     text-align: center;
 }
@@ -617,5 +618,31 @@ a:hover, a:active {
 
     .project-display img {
         float: none;
+        padding: 0;
+        max-width: 60%;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    body {
+        padding-top: 0 !important;
+    }
+
+    .fixed-nav {
+        position: static;
+    }
+
+    .fixed-nav li {
+        margin: 0;
+    }
+
+    .nav-item {
+        display: block;
+    }
+
+    .nav-list {
+        opacity: 0.95;
     }
 }
