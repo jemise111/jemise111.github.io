@@ -304,7 +304,7 @@ textarea {
 }
 
 body {
-    background-image: url('../img/background3.jpg');
+    background-image: url('../img/background6.png');
     background-attachment: fixed;
     background-size: cover;
     color: #FFFFFF;
@@ -420,7 +420,7 @@ a:hover, a:active {
 #about {
     background: #666666;
     line-height: 2em;
-    opacity: 0.9;
+    opacity: 0.8;
     padding: 3% 5% 10% 5%;
 }
 
@@ -438,7 +438,7 @@ a:hover, a:active {
 #technologies {
     background: #555555;
     padding: 5% 4% 10% 4%;
-    opacity: 0.9;
+    opacity: 0.8;
     min-height: 300px;
     text-align: center;
 }
@@ -499,7 +499,7 @@ a:hover, a:active {
 #projects {
     background: #333333;
     padding: 3% 5% 10% 5%;
-    opacity: 0.9;
+    opacity: 0.8;
     text-align: center;
 }
 
