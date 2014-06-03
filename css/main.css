@@ -308,6 +308,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
+    background-repeat: none;
     color: #FFFFFF;
     font-family: 'Lato', sans-serif;
     font-size: 1.1em;
