@@ -574,6 +574,15 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+#trippindots-display a, #trippindots-display a:visited {
+    color: #CC818A;
+    text-decoration: none;
+}
+
+#trippindots-display a:hover, #trippindots-display a:active {
+    text-decoration: underline;
+}
+
 .project-display img {
     float: right;
     padding: 20px;

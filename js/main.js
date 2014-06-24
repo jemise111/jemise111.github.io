@@ -2,8 +2,8 @@ var POSITIONCHANGER = 100; // Percentage, not pixels
 var project1 = $('<div class="project-display" id="baller-display"><img src="img/ballernyc.png"><div class="project-display-info"><h2 class="project-title">BallerNYC</h2><p class="project-description">Set up pickup basketball games before ever stepping foot outside. BallerNYC allows users to search for a public court in New York City and schedule a game for other users to join.</p><p class="project-links"><a href="http://ballernycco.com">View the site</a><br><a href="https://github.com/jemise111/baller">View the code</a></p></div></div>)');
 var project2 = $('<div class="project-display" id="learnr-display"><img src="img/learnr.png"><div class="project-display-info"><h2 class="project-title">Learnr</h2><p class="project-description">An interactive free learning platform for children. Learn music theory through and online keyboard, and programming fundamentals through a fun grid-based game.</p><p class="project-links"><a href="http://learnur.herokuapp.com">View the site</a><br><a href="https://github.com/lacostenycoder/Learn.R/">View the code</a></p></div></div>)');
 var project3 = $('<div class="project-display" id="relephant-display"><img src="img/relephant.png"><div class="project-display-info"><h2 class="project-title">Relephant</h2><p class="project-description">A speech recording tool that graphs the history of your conversations. Relephant also allows users to analyze speech for meaning.</p><p class="project-links"><a href="http://relephant.me">View the site</a><br><a href="https://github.com/sjstebbins/relephant/">View the code</a></p></div></div>)');
-var projects = [project1, project2, project3];
-var colorPicker = ['#FD7914', '#87CEFA', '#B8B1AD'];
+var project4 = $('<div class="project-display" id="trippindots-display"><img src="img/trippindots.png"><div class="project-display-info"><h2 class="project-title">Trippin Dots</h2><p class="project-description">An attempt at music visualization hacked together at the Monthly Music Hackathon in NYC.</p><p class="project-links"><a href="http://trippindots.herokuapp.com">View the site</a><br><a href="https://github.com/alexshook/trippindots">View the code</a></p></div></div>)');
+var projects = [project1, project2, project3, project4];
 var carouselCounter;
 var interval;
 var navIsWide = false;
@@ -19,7 +19,7 @@ function slideCaption(){
 
 function carouselControls() {
   for (var i = 0; i < projects.length; i++) {
-    var dot = $("<li class='project-control-dot'><div id='" + projects[i].find('h2').text() + "-dot'></li></div>");
+    var dot = $("<li class='project-control-dot'><div id='" + projects[i].find('h2').text().split(" ").join("") + "-dot'></li></div>");
     $('#project-controls').append(dot);
   }
 }
@@ -31,14 +31,14 @@ function startCarousel(){
   resetProjectsCSS();
   resetProjectDotCSS();
   $('#project-box').append(projects[carouselCounter % (projects.length)]);
-  $('#' + projects[(carouselCounter) % (projects.length)].find('h2').text() + '-dot').css({
+  $('#' + projects[(carouselCounter) % (projects.length)].find('h2').text().split(" ").join("") + '-dot').css({
     height: '25px',
     width: '25px'
   });
   interval = setInterval(function(){
     var elToShow = projects[(carouselCounter + 1) % (projects.length)];
-    var dotToHideID = '#' + projects[(carouselCounter) % (projects.length)].find('h2').text() + '-dot';
-    var dotToShowID = '#' + elToShow.find('h2').text() + '-dot';
+    var dotToHideID = '#' + projects[(carouselCounter) % (projects.length)].find('h2').text().split(" ").join("") + '-dot';
+    var dotToShowID = '#' + elToShow.find('h2').text().split(" ").join("") + '-dot';
     changeDotSizes(dotToHideID, dotToShowID);
     carouselIteration(elToShow);
     carouselCounter++;
@@ -46,6 +46,8 @@ function startCarousel(){
 }
 
 function changeDotSizes(dotToHideID, dotToShowID){
+  console.log(dotToHideID);
+  console.log(dotToShowID);
   $(dotToHideID).animate({
     height: '15px',
     width: '15px'
@@ -142,7 +144,7 @@ function projectDotsHover(){
 function projectDotsClick(){
   $('.project-control-dot div').click(function(){
     var clickedProjectName = $(this).attr('id').replace('-dot','');
-    var displayedProjectName = projects[carouselCounter % projects.length].find('h2').text();
+    var displayedProjectName = projects[carouselCounter % projects.length].find('h2').text().split(" ").join("");
     if (clickedProjectName !== displayedProjectName) {
       if ($('.project-display').is(':animated')) {
         cutMidway = true;
@@ -154,17 +156,18 @@ function projectDotsClick(){
       $('#play').show();
       $('#pause').hide();
       resetProjectsCSS();
-      // resetProjectDotCSS();
       var dotToHideID = '#' + displayedProjectName + '-dot';
       if (clickedProjectName === 'BallerNYC') {
         carouselCounter = 0;
       } else if (clickedProjectName === 'Learnr') {
         carouselCounter = 1;
-      } else {
+      } else if (clickedProjectName === 'Relephant') {
         carouselCounter = 2;
+      } else {
+        carouselCounter = 3;
       }
       var elToShow = projects[carouselCounter];
-      var dotToShowID = '#' + elToShow.find('h2').text() + '-dot';
+      var dotToShowID = '#' + elToShow.find('h2').text().split(" ").join("") + '-dot';
       changeDotSizes(dotToHideID, dotToShowID);
       cutMidway = false;
       carouselIteration(elToShow);
