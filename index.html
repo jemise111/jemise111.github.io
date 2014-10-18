@@ -12,51 +12,60 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/header.js"></script>
+        <script src="js/navBar.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <ul id="contact-list">
+            <li id="github-icon"><a href="https://github.com/jemise111"><img src="img/github.png"></a></li>
+            <li id="twitter-icon"><a href="https://twitter.com/jsessler"><img src="img/twitter.png"></a></li>
+            <li id="linkedin-icon"><a href="https://www.linkedin.com/in/jessesessler"><img src="img/linkedin.png"></a></li>
+            <li id="wordpress-icon"><a href="http://stockstoblocks.com/"><img src="img/wordpress.png"></a></li>
+        </ul>
         <div id="header-container">
-            <h1 id="name">Jesse Sessler</h1>
-            <div id="caption-holder">
-                <h2 id="caption">Web Developer</h2>
+            <div id="title-container">
+                <h1 id="name"><span class="first-initial">J</span><span class="first-name">esse&nbsp;</span>S<span class="last-name">essler</span></h1>
+                <div id="caption-holder">
+                    <h2 id="caption">Web Developer</h2>
+                    <a id="mail-link" href="mailto:jesse.sessler@gmail.com">jesse.sessler@gmail.com</a>
+                </div>
             </div>
-            <ul id="contact-list">
-                <li><a href="https://github.com/jemise111"><img src="img/github_alt.png"></a></li>
-                <li><a href="https://www.linkedin.com/in/jessesessler"><img src="img/linkedin.png"></a></li>
-                <li><a href="https://twitter.com/jsessler"><img src="img/twitter.png"></a></li>
-                <li><a href="http://stockstoblocks.com/"><img src="img/wordpress.png"></a></li>
-            </ul>
-            <a id="mail-link" href="mailto:jesse.sessler@gmail.com">jesse.sessler@gmail.com</a>
         </div>
             <ul class="nav-list white-on-mobile">
                 <li class='nav-item'><a class="smoothscroll" href="#about">About</a></li>
-                <li class='nav-item'><a class="smoothscroll" href="#technologies">Technologies</a></li>
+                <li class='nav-item'><a class="smoothscroll" href="#skills"1>Skills</a></li>
                 <li class='nav-item'><a class="smoothscroll" href="#projects">Projects</a></li>
-                <li class='nav-item'><a href="pdf/sessler_resume.pdf">Resume</a></li>
+                <li class='nav-item'><a href="pdf/sessler_resume.pdf">Resum&eacute;</a></li>
                 <li class='nav-item'><a href="http://stockstoblocks.com">Blog</a></li>
             </ul>
         <div class="container">
             <div id="about">
+                <h2 class="section-header">About</h2>
                 <img id='self-pic' src="img/jcp_headshot.jpg">
-                <h2 class="section-header">About Me</h2>
                 <p>
-                    My name is Jesse, and I'm a web developer. I'm a recent graduate of General Assembly's <a href="https://generalassemb.ly/education/web-development-immersive">Web Development Immersive</a> program, a 12-week bootcamp that teaches the fundamentals of front-end and back-end development. During my time there, I learned about all aspects of the web application building process, from design to deployment. This includes using RESTful architectures, Agile and Test-Driven methodologies, integrating APIs, and a variety of languages and technologies.
+                    My name is Jesse, and I'm a web developer. I'm a recent graduate of General Assembly's Web Development Immersive program, a 12-week bootcamp that teaches the fundamentals of front-end and back-end development. <a href="https://generalassemb.ly/education/web-development-immersive">Learn more</a>.
                     <br>
                     <br>
-                    After graduating from Tufts University in 2012, I worked at <a href="https://www.bamfunds.com/">Balyasny Asset Management</a>, a multi-strategy hedge fund, where I researched equities in the tech and internet sectors and gave investment recommendations. While at Balyasny, I met executives behind some of the most interesting and powerful projects on the web today. The more time I spent focused on the internet sector, the more I realized my interest was in the products, not the financial statements. That is when I decided to transition to the world of web development.
+                    After graduating from Tufts University in 2012, I worked at <a href="https://www.bamfunds.com/">Balyasny Asset Management</a>, a multi-strategy hedge fund, where I researched equities in the tech and internet sectors and gave investment recommendations. While at Balyasny, I met executives behind some of the most interesting and powerful projects on the web today. The more time I spent focused on the internet sector, the more I realized my interest was in the products, not the financial statements. That's when I decided to transition to the world of web development.
                     <br>
                     <br>
-                    Please view projects I have worked on below and feel free to contact me any time!
+                    See projects I've worked on below and feel free to contact me any time!
                 </p>
             </div>
-            <div id="technologies">
-                <h2 class="section-header">Technologies I've Worked With</h2>
+            <div id="skills">
+                <h2 class="section-header">Skills</h2>
                 <div id="tech-box-1" class="technologies-box">
+                    <div class="at-border top"></div>
+                    <div class="at-border right"></div>
+                    <div class="at-border bottom"></div>
+                    <div class="at-border left"></div>
                     <ul class="technologies-list">
                         <li class="technologies-header">Languages</li>
                         <li class="technologies-item">Ruby</li>
@@ -68,8 +77,12 @@
                     </ul>
                 </div>
                 <div id="tech-box-2" class="technologies-box">
+                    <div class="at-border top"></div>
+                    <div class="at-border right"></div>
+                    <div class="at-border bottom"></div>
+                    <div class="at-border left"></div>
                     <ul class="technologies-list">
-                        <li class="technologies-header">Frameworks & Libraries</li>
+                        <li class="technologies-header">Frameworks</li>
                         <li class="technologies-item">Rails</li>
                         <li class="technologies-item">Sinatra</li>
                         <li class="technologies-item">JQuery</li>
@@ -78,6 +91,10 @@
                     </ul>
                 </div>
                 <div id="tech-box-3" class="technologies-box">
+                    <div class="at-border top"></div>
+                    <div class="at-border right"></div>
+                    <div class="at-border bottom"></div>
+                    <div class="at-border left"></div>
                     <ul class="technologies-list">
                         <li class="technologies-header">Testing</li>
                         <li class="technologies-item">RSpec</li>
@@ -87,8 +104,12 @@
                     </ul>
                 </div>
                 <div id="tech-box-4" class="technologies-box">
+                    <div class="at-border top"></div>
+                    <div class="at-border right"></div>
+                    <div class="at-border bottom"></div>
+                    <div class="at-border left"></div>
                     <ul class="technologies-list">
-                        <li class="technologies-header">Methodologies & Other</li>
+                        <li class="technologies-header">Other</li>
                         <li class="technologies-item">Agile</li>
                         <li class="technologies-item">Git / Github / Bitbucket</li>
                         <li class="technologies-item">TDD / BDD</li>
@@ -99,14 +120,12 @@
                 </div>
             </div>
             <div id="projects">
-                <h2 class="section-header">Projects</h2>
-                <div id="project-box"></div>
+                <h2 class="section-header">Projects<img class='play-pause' id="play" src="img/play.png"><img class='play-pause' id="pause" src="img/pause.png"></h2>
                 <ul id="project-controls"></ul>
-                <img class='play-pause' id="play" src="img/play.png">
-                <img class='play-pause' id="pause" src="img/pause.png">
+                <div id="project-box"></div>
             </div>
             <div id="footer">
-                <p>This website was made with love by Jesse Sessler. <a href='https://github.com/jemise111/jemise111.github.io'>See the code.</a></p>
+                <p>Hand made. <a href='https://github.com/jemise111/jemise111.github.io'>Check it out.</a></p>
             </div>
         </div>
     </body>
