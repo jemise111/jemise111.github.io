@@ -9,7 +9,7 @@
 		if (headerContainer) {
 			headerContainer.className += ' show';
 		}
-	}, 300);
+	}, 500);
 
 	var downArrow = document.querySelector('.fa-angle-down');
 	var projectsTitle = document.querySelector('.projects');

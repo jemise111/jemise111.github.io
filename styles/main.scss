@@ -1,8 +1,10 @@
 /*** VARS ***/
 $black: #000000;
-$blue: #4A82AB;
 $grey: #999999;
 $white: #FFFFFF;
+$purple: #1C0435;
+$pink: #F3326B;
+$orange: #D47946;
 
 $ipad: 768px;
 $iphone6: 375px;
@@ -14,10 +16,18 @@ $iphone6: 375px;
 }
 
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 1px;
+
+	.break {
+		background-color: $white;
+		height: 3px;
+		margin: 15px 0px 10px 0px;
+		width: 50px;
+	}
 
 	.bg-image {
-		background-image: url(../images/background.jpg);
+		background-image: url(https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=786a67dca1d8791d181bfd90b16240d9);
 		background-repeat: no-repeat;
 		background-size: cover;
 		height: 100vh;
@@ -28,9 +38,9 @@ body {
 	}
 
 	.overlay {
-		background-color: $blue;
+		background-color: $black;
 		height: 100vh;
-		opacity: 0.2;
+		opacity: 0.3;
 		position: fixed;
 		top: 0;
 		width: 100%;
@@ -46,13 +56,13 @@ body {
 		width: 100%;
 
 		.inner {
-			transition: all .5s;
+			transition: all .8s;
 
 			color: $white;
 			opacity: 0;
 			position: relative;
 			text-align: center;
-			top: 10px;
+			top: 20px;
 
 			&.show {
 				opacity: 1;
@@ -70,7 +80,7 @@ body {
 				}
 
 				&:hover {
-					color: $blue;
+					color: $pink;
 				}
 			}
 
@@ -80,15 +90,14 @@ body {
 				align-items: center;
 
 				h1 {
-					font-family: 'Montserrat', sans-serif;
+					font-family: 'Raleway', sans-serif;
 					font-size: 62px;
-					font-style: italic;
 					text-transform: uppercase;
+					letter-spacing: 6px;
 				}
 
 				h2 {
 					font-size: 22px;
-					font-style: italic;
 					margin-top: 10px;
 				}
 
@@ -129,20 +138,33 @@ body {
 		background: $white;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 		opacity: 0.9;
 		padding-bottom: 50px;
 		width: 100%;
 
+		.break {
+			background-color: $black;
+			margin: 25px 0px 0px 0px;
+		}
+
 		h2 {
+			font-family: 'Raleway', sans-serif;
+			letter-spacing: 6px;
 			font-size: 40px;
-			padding: 50px 0px;
+			margin: 60px 0px 0px 0px;
 			text-align: center;
+			text-transform: uppercase;
+
+			@media (min-width: $ipad) {
+				margin-top: 120px;
+			}
 		}
 
 		.project-container {
 			align-items: center;
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			justify-content: center;
 			flex-wrap: wrap;
 			padding-bottom: 100px;
@@ -150,8 +172,7 @@ body {
 
 			@media (min-width: $ipad) {
 				flex-direction: row;
-				justify-content: space-between;
-				width: 720px;
+				justify-content: space-around;
 			}
 			
 			.project {
@@ -164,67 +185,44 @@ body {
 				}
 			}
 
-			.right {
-				
-				@media (min-width: $ipad) {
-					display: flex;
-					flex-direction: column;
-					height: 350px;
-					justify-content: space-between;
-					
-					.project {
-						height: 165px;
-						width: 350px;
-					}
-				}
-			}
-
-			.bottom {
-
-				@media (min-width: $ipad) {
-					margin-top: 20px;
-
-					.project {
-						height: 180px;
-						width: 720px;
-					}
-				}
-			}
-
 			.project {
-
 				border: 1px solid $grey;
 				background-repeat: no-repeat;
 				background-size: cover;
-				margin-top: 30px;
+				margin-top: 50px;
 				overflow: hidden;
 				position: relative;
-
-				@media (min-width: $ipad) {
-					margin-top: 0px;
-				}
 
 				&.baller {
 					background-image: url(../images/ballernyc.png);
 				}
 				&.haus {
-					background-image: url(../images/hausthebott.png);
-					background-position-x: -150px;
-					@media (min-width: $ipad) {
-						background-position-x: 0px;
-					}
+					background-image: url(../images/hausthebott_small.png);
 				}
 				&.relephant {
-					background-image: url(../images/relephant.png);
+					background-image: url(../images/relephant_small.png);
 				}
 				&.trippin {
-					background-image: url(../images/trippindots.png);
+					background-image: url(../images/trippindots_small_2.png);
+				}
+				&.djlazy {
+					background-image: url(../images/djlazy.png);
+				}
+				&.rnradio {
+					background-image: url(../images/rnradio.png);
+					.project-text {
+						.inner {
+							h3 {
+								letter-spacing: 4px;
+							}
+						}
+					}
 				}
 
 				.project-overlay {
 					transition: all .3s;
 
-					background: $black;
+					background: $purple;
 					bottom: 0;
 					display: flex;
 					flex-direction: column;
@@ -246,7 +244,7 @@ body {
 				    text-decoration: none;
 
 				    &:hover {
-				    	color: $blue;
+				    	color: $pink;
 				    }
 				}
 
@@ -264,6 +262,12 @@ body {
 					right: 0;
 					top: 0;
 
+					.break {
+						background-color: $white;
+						display: inline-block;
+						margin: 8px 0px 10px 0px;
+					}
+
 					.inner {
 						transition: all .3s;
 
@@ -275,21 +279,24 @@ body {
 						width: 90%;
 
 						h3 {
-							font-family: 'Montserrat', sans-serif;
+							font-family: 'Raleway', sans-serif;
 							font-size: 22px;
+							letter-spacing: 6px;
 							margin-bottom: 10px;
+							text-transform: uppercase;
 						}
 
 						p {
-							line-height: 20px;
+							line-height: 22px;
 						}
 
 						a {
 							transition: all .3s;
 
 							&:not(.underline) {
-								border: 2px solid $blue;
-								color: $blue;
+								border: 2px solid $pink;
+								border-radius: 5px;
+								color: $pink;
 								display: inline-block;
 								margin-top: 13px;
 								text-decoration: none;
@@ -304,12 +311,12 @@ body {
 
 								&:hover {
 									background: none;
-									color: $blue;
+									color: $pink;
 								}
 							}
 
 							&:hover {
-								background: $blue;
+								background: $pink;
 								color: $white;
 							}
 						}
@@ -318,7 +325,7 @@ body {
 
 				&:hover, &.reveal {
 					.project-overlay {
-						opacity: .8
+						opacity: .9
 					}
 
 					.project-text {
@@ -359,16 +366,17 @@ body {
 		a.contact, a.resume {
 			transition: all .5s;
 
-			border: 4px solid $white;
-			color: $white;
-			font-family: 'Montserrat', sans-serif;
+			border: 1px solid $pink;
+			border-radius: 5px;
+			color: $pink;
+			font-family: 'Raleway', sans-serif;
 			font-size: 36px;
 			padding: 20px 50px;
 			text-decoration: none;
 
 			&:hover {
-				background: $white;
-				color: $blue;
+				background: $pink;
+				color: $white;
 			}
 		}
 
@@ -391,7 +399,7 @@ body {
 			text-decoration: none;
 
 			&:hover {
-				color: $blue;
+				color: $pink;
 			}
 		}
 	}
