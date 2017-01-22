@@ -6,6 +6,46 @@
     transform: translateY(-10px); }
   55% {
     transform: translateY(-5px); } }
+@keyframes lineexpandright {
+  0% {
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    left: 0px;
+    height: 0px;
+    width: 0px; }
+  0.1% {
+    border-bottom-width: 2px;
+    border-right-width: 2px; }
+  50% {
+    height: 0px;
+    left: 0px;
+    width: 250px; }
+  100% {
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    left: 10px;
+    height: 30px;
+    width: 250px; } }
+@keyframes lineexpandleft {
+  0% {
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    right: 0px;
+    height: 0px;
+    width: 0px; }
+  0.1% {
+    border-bottom-width: 2px;
+    border-left-width: 2px; }
+  50% {
+    height: 0px;
+    right: 0px;
+    width: 250px; }
+  100% {
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    right: 10px;
+    height: 30px;
+    width: 250px; } }
 body {
   font-family: 'Raleway', sans-serif;
   letter-spacing: 1px; }
@@ -15,7 +55,7 @@ body {
     margin: 15px 0px 10px 0px;
     width: 50px; }
   body .bg-image {
-    background-image: url(https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=786a67dca1d8791d181bfd90b16240d9);
+    background-image: url(../images/stars-background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -64,10 +104,12 @@ body {
           font-family: 'Raleway', sans-serif;
           font-size: 62px;
           text-transform: uppercase;
-          letter-spacing: 6px; }
+          letter-spacing: 6px;
+          margin-left: 3px; }
         body .header .inner .text-container h2 {
           font-size: 22px;
-          margin-top: 10px; }
+          margin-top: 10px;
+          line-height: 26px; }
         body .header .inner .text-container h3 {
           margin-top: 10px; }
         body .header .inner .text-container .icons-container {
@@ -94,63 +136,156 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    opacity: 0.9;
     padding-bottom: 50px;
     width: 100%; }
     body .projects .break {
       background-color: #000000;
-      margin: 25px 0px 0px 0px; }
+      margin: 25px 0px 40px 0px; }
     body .projects h2 {
       font-family: 'Raleway', sans-serif;
       letter-spacing: 6px;
-      font-size: 40px;
+      font-size: 50px;
       margin: 60px 0px 0px 0px;
       text-align: center;
       text-transform: uppercase; }
       @media (min-width: 768px) {
         body .projects h2 {
-          margin-top: 120px; } }
-    body .projects .project-container {
-      align-items: center;
+          margin-top: 80px; } }
+    body .projects .projects-container {
       display: flex;
       flex-direction: row;
-      justify-content: center;
       flex-wrap: wrap;
+      align-items: center;
+      overflow: hidden;
       padding-bottom: 100px;
       width: 100%; }
       @media (min-width: 768px) {
-        body .projects .project-container {
-          flex-direction: row;
+        body .projects .projects-container {
           justify-content: space-around; } }
-      body .projects .project-container .project {
+      @media (min-width: 1000px) {
+        body .projects .projects-container {
+          flex-direction: column; } }
+      body .projects .projects-container .project-container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0px auto; }
+        body .projects .projects-container .project-container .line-container, body .projects .projects-container .project-container .project-name-color {
+          display: none; }
+        @media (min-width: 1000px) {
+          body .projects .projects-container .project-container {
+            margin: 50px auto;
+            width: 1000px; }
+            body .projects .projects-container .project-container .line-container, body .projects .projects-container .project-container .project-name-color {
+              display: block; }
+            body .projects .projects-container .project-container:nth-child(odd) {
+              justify-content: flex-start;
+              padding-left: 30px; }
+              body .projects .projects-container .project-container:nth-child(odd) .line-container {
+                margin-left: 30px; }
+                body .projects .projects-container .project-container:nth-child(odd) .line-container .line {
+                  left: 0px;
+                  transform: skew(-30deg);
+                  border-right: 0px solid #F3326B; }
+              body .projects .projects-container .project-container:nth-child(odd) .project-name-color {
+                left: 18px; }
+                body .projects .projects-container .project-container:nth-child(odd) .project-name-color .dot {
+                  margin-right: 5px; }
+              body .projects .projects-container .project-container:nth-child(odd).expand .line {
+                animation-name: lineexpandright;
+                animation-duration: .6s;
+                animation-fill-mode: forwards; }
+            body .projects .projects-container .project-container:nth-child(even) {
+              justify-content: flex-end;
+              padding-right: 30px; }
+              body .projects .projects-container .project-container:nth-child(even) .line-container {
+                margin-right: 30px; }
+                body .projects .projects-container .project-container:nth-child(even) .line-container .line {
+                  right: 0px;
+                  transform: skew(30deg);
+                  border-left: 0px solid #F3326B; }
+              body .projects .projects-container .project-container:nth-child(even) .project-name-color {
+                right: 18px; }
+                body .projects .projects-container .project-container:nth-child(even) .project-name-color .dot {
+                  margin-left: 5px; }
+              body .projects .projects-container .project-container:nth-child(even).expand .line {
+                animation-name: lineexpandleft;
+                animation-duration: .6s;
+                animation-fill-mode: forwards; }
+            body .projects .projects-container .project-container.expand .project-name-color {
+              opacity: 1; } }
+        body .projects .projects-container .project-container.reveal .project {
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+          body .projects .projects-container .project-container.reveal .project .project-overlay {
+            opacity: 0.8; }
+          body .projects .projects-container .project-container.reveal .project .project-text .inner {
+            opacity: 1;
+            top: 0px; }
+          body .projects .projects-container .project-container.reveal .project .github {
+            opacity: 1; }
+      body .projects .projects-container .project {
         height: 300px;
         width: 300px; }
-        @media (min-width: 375px) {
-          body .projects .project-container .project {
+        @media (min-width: 768px) {
+          body .projects .projects-container .project {
             height: 350px;
-            width: 350px; } }
-      body .projects .project-container .project {
+            width: 500px; } }
+      body .projects .projects-container .line-container {
+        height: 37px;
+        width: 270px;
+        position: relative;
+        overflow: hidden; }
+        body .projects .projects-container .line-container .line {
+          position: absolute;
+          bottom: 0px;
+          height: 0px;
+          width: 0px;
+          border-bottom: 0px solid #F3326B; }
+      body .projects .projects-container .project-name-color {
+        transition: opacity .3s .6s;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        opacity: 0;
+        position: relative;
+        top: -45px;
+        max-width: 170px;
+        text-align: center; }
+        body .projects .projects-container .project-name-color .dot {
+          display: none;
+          border-radius: 7.5px;
+          height: 15px;
+          width: 15px;
+          background: #F3326B;
+          margin-top: -1px; }
+        body .projects .projects-container .project-name-color p {
+          font-size: 28px;
+          margin-top: -5px; }
+      body .projects .projects-container .project {
+        transition: box-shadow .3s;
         background-repeat: no-repeat;
         background-size: cover;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        background-position: center;
         margin-top: 50px;
         overflow: hidden;
         position: relative; }
-        body .projects .project-container .project.baller {
+        body .projects .projects-container .project.baller {
           background-image: url(../images/ballernyc.png); }
-        body .projects .project-container .project.haus {
+        body .projects .projects-container .project.haus {
           background-image: url(../images/hausthebott_small.png); }
-        body .projects .project-container .project.relephant {
+        body .projects .projects-container .project.relephant {
           background-image: url(../images/relephant_small.png); }
-        body .projects .project-container .project.trippin {
+        body .projects .projects-container .project.trippin {
           background-image: url(../images/trippindots_small_2.png); }
-        body .projects .project-container .project.djlazy {
+        body .projects .projects-container .project.djlazy {
           background-image: url(../images/djlazy.png); }
-        body .projects .project-container .project.rnradio {
+        body .projects .projects-container .project.rnradio {
           background-image: url(../images/rnradio.png); }
-          body .projects .project-container .project.rnradio .project-text .inner h3 {
+          body .projects .projects-container .project.rnradio .project-text .inner h3 {
             letter-spacing: 4px; }
-        body .projects .project-container .project .project-overlay {
+        body .projects .projects-container .project .project-overlay {
           transition: all .3s;
           background: #1C0435;
           bottom: 0;
@@ -161,7 +296,7 @@ body {
           position: absolute;
           right: 0;
           top: 0; }
-        body .projects .project-container .project .github {
+        body .projects .projects-container .project .github {
           transition: all .3s;
           bottom: 5px;
           color: #FFFFFF;
@@ -169,9 +304,9 @@ body {
           opacity: 0;
           position: absolute;
           text-decoration: none; }
-          body .projects .project-container .project .github:hover {
+          body .projects .projects-container .project .github:hover {
             color: #F3326B; }
-        body .projects .project-container .project .project-text {
+        body .projects .projects-container .project .project-text {
           transition: all .6s;
           align-items: center;
           bottom: 0;
@@ -183,11 +318,14 @@ body {
           position: absolute;
           right: 0;
           top: 0; }
-          body .projects .project-container .project .project-text .break {
+          body .projects .projects-container .project .project-text .break {
             background-color: #FFFFFF;
             display: inline-block;
             margin: 8px 0px 10px 0px; }
-          body .projects .project-container .project .project-text .inner {
+            @media (min-width: 1000px) {
+              body .projects .projects-container .project .project-text .break {
+                display: none; } }
+          body .projects .projects-container .project .project-text .inner {
             transition: all .3s;
             color: #FFFFFF;
             opacity: 0;
@@ -195,17 +333,23 @@ body {
             text-align: center;
             top: 10px;
             width: 90%; }
-            body .projects .project-container .project .project-text .inner h3 {
+            @media (min-width: 1000px) {
+              body .projects .projects-container .project .project-text .inner {
+                width: 60%; } }
+            body .projects .projects-container .project .project-text .inner h3 {
               font-family: 'Raleway', sans-serif;
               font-size: 22px;
               letter-spacing: 6px;
               margin-bottom: 10px;
               text-transform: uppercase; }
-            body .projects .project-container .project .project-text .inner p {
+              @media (min-width: 1000px) {
+                body .projects .projects-container .project .project-text .inner h3 {
+                  display: none; } }
+            body .projects .projects-container .project .project-text .inner p {
               line-height: 22px; }
-            body .projects .project-container .project .project-text .inner a {
+            body .projects .projects-container .project .project-text .inner a {
               transition: all .3s; }
-              body .projects .project-container .project .project-text .inner a:not(.underline) {
+              body .projects .projects-container .project .project-text .inner a:not(.underline) {
                 border: 2px solid #F3326B;
                 border-radius: 5px;
                 color: #F3326B;
@@ -213,23 +357,16 @@ body {
                 margin-top: 13px;
                 text-decoration: none;
                 padding: 10px 20px; }
-              body .projects .project-container .project .project-text .inner a.underline {
+              body .projects .projects-container .project .project-text .inner a.underline {
                 border: none;
                 color: #FFFFFF;
                 text-decoration: underline; }
-                body .projects .project-container .project .project-text .inner a.underline:hover {
+                body .projects .projects-container .project .project-text .inner a.underline:hover {
                   background: none;
                   color: #F3326B; }
-              body .projects .project-container .project .project-text .inner a:hover {
+              body .projects .projects-container .project .project-text .inner a:hover {
                 background: #F3326B;
                 color: #FFFFFF; }
-        body .projects .project-container .project:hover .project-overlay, body .projects .project-container .project.reveal .project-overlay {
-          opacity: 0.9; }
-        body .projects .project-container .project:hover .project-text .inner, body .projects .project-container .project.reveal .project-text .inner {
-          opacity: 1;
-          top: 0px; }
-        body .projects .project-container .project:hover .github, body .projects .project-container .project.reveal .github {
-          opacity: 1; }
   body .footer {
     align-items: center;
     background: transparent;
@@ -274,5 +411,11 @@ body {
       text-decoration: none; }
       body .footer a.github:hover {
         color: #F3326B; }
+  body.is-touch-device .projects .projects-container .project .project-text .inner a:not(.underline) {
+    background: #F3326B;
+    color: #FFFFFF; }
+  body.is-touch-device .footer a.contact, body.is-touch-device .footer a.resume {
+    background: #F3326B;
+    color: #FFFFFF; }
 
 /*# sourceMappingURL=main.css.map */
