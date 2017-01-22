@@ -434,6 +434,12 @@ body {
 						}
 					}
 				}
+				&.stargazer {
+					background-image: url(../images/stargazer.jpg);
+				}
+				&.swipelistview {
+					background-image: url(../images/rnswipe.png);
+				}
 
 				.project-overlay {
 					transition: all .3s;

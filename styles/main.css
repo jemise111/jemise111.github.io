@@ -285,6 +285,10 @@ body {
           background-image: url(../images/rnradio.png); }
           body .projects .projects-container .project.rnradio .project-text .inner h3 {
             letter-spacing: 4px; }
+        body .projects .projects-container .project.stargazer {
+          background-image: url(../images/stargazer.jpg); }
+        body .projects .projects-container .project.swipelistview {
+          background-image: url(../images/rnswipe.png); }
         body .projects .projects-container .project .project-overlay {
           transition: all .3s;
           background: #1C0435;
