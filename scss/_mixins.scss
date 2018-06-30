@@ -1,0 +1,23 @@
+@mixin heading-font() {
+  font-weight: 700;
+  font-family: 'Cormorant';
+}
+
+@mixin body-font() {
+  font-weight: 400;
+  font-family: 'Cormorant';
+}
+
+@mixin title-font() {
+  font-weight: 400;
+  font-family: 'Cormorant';
+  font-style: italic;
+}
+
+@mixin uppercase-font() {
+  font-size: 10px;
+  font-weight: 300;
+  font-family: 'Cormorant';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
