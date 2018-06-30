@@ -385,3 +385,9 @@ section h2 {
   color: #901623;
   text-decoration: none;
 }
+
+/* Image preload */
+body:after {
+  content: url(../img/headshot.png) url(../img/headshot-blue.png) url(../img/headshot-orange.png) url(../img/headshot-purple.png) url(../img/headshot-teal.png);
+  display: none;
+}
