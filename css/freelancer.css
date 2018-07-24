@@ -130,10 +130,15 @@ section h2 {
   width: 300px;
 }
 
+.container .left a {
+  color: #901623;
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   .container .left {
     margin-top: 0;
-    margin-bottom: -118px;
+    margin-bottom: -140px;
   }
 }
 

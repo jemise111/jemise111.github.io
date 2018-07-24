@@ -125,10 +125,15 @@ section {
   .left {
     margin-top: calc(50vh - 160px);
     width: 300px;
+
+    a {
+      color: $primary;
+      text-decoration: none;
+    }
     
     @media (min-width: 768px) {
       margin-top: 0;
-      margin-bottom: -118px;
+      margin-bottom: -140px;
     }
   }
 
